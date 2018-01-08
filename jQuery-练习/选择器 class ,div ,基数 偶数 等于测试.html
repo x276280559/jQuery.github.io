@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>长沙</div>
+		<div class="a">长沙</div>	
+		<div id="b">长沙</div>
+		<div id="c">长沙</div>
+		<div id="d">长沙</div>
+		<div id="e">长沙</div>
+		<div id="f">长沙</div>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+ //标签设置样式
+	$(function(){
+		$("div").css("background","red")
+	})
+	
+//class设置样式
+	$(function(){
+		$(".a").css("background","yellow")
+	})
+	
+//基数设置样式
+	$(function(){
+			$("div:odd").css("background","pink")
+		})
+	
+//偶数设置样式	
+	$(function(){
+				$("div:even").css("background","aquamarine")
+			})
+</script>
+

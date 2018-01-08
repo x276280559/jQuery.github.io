@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">优才</div>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+
+//jQuery方式
+	//$(function(){
+		//$("#box").click(function(){
+		//	$("#box").css("color","red");
+		//	$("#box").css("fontSize","50px");
+		//})
+		
+	//})
+	
+//jQuery转换为原生JS	
+	//	var oBox = document.getElementById("box")
+	//	$("#box")[0].onclick=function(){
+	//		oBox.style.color ="red";
+	//	}
+	
+//JS转换为原生jQuery
+	//var oBox = document.getElementById("box")		（  × ）！！！
+	
+	//一，不需要定义var oBOX
+	//二,加一个$(function(){} )  等加载
+	//三,直接给#box加个$和括号
+	
+	$(function(){
+		$("#box").click(function(){
+			$("#box").css("color","red");
+			$("#box").css("fontSize","50px");
+		
+		})
+	})
+	
+</script>

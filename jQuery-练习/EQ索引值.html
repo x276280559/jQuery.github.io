@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>你好</div>
+		<div>你好</div>
+		<div>你好</div>
+		<div>你好</div>
+		<div>你好</div>
+		<div>你好</div>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+<script>
+
+//匹配一个给定索引值的元素
+
+	$(function(){
+		$("div:eq(1)").css("color","red")
+	})
+	
+//匹配所有大于给定索引值的元素
+
+	$(function(){
+		$("div:gt(2)").css("color","blueviolet")
+	})
+	
+//匹配所有小于给定索引值的元素
+
+	$(function(){
+		$("div:lt(1)").css("color","mediumspringgreen")
+	})
+</script>
