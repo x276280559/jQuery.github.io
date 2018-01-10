@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			select{
+				width:260px;height:400px;font-size:18px;background-color: #a4ff34;color:brown;
+
+			}
+		</style>
+	</head>
+	<body>
+		<select id="left" size="10px" multiple>
+			<option>苹果</option>
+			<option>梨</option>
+			<option>西瓜</option>
+			<option>芒果</option>
+			<option>菠萝</option>
+		</select>
+		
+		<input type="button" value=">>>"/>
+		<input type="button" value="<<<"/>
+		<input type="button" value=">"/>
+		<input type="button" value="<"/>
+		
+		<select id="right" size="10px" multiple></select>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	$("input:eq(0)").click(function(){
+		var m = $("#left option")
+		$("#right").append(m)
+	})
+	
+	$("input:eq(1)").click(function(){
+		var m = $("#right option")
+		$("#left").append(m)
+	})
+	
+	$("input:eq(2)").click(function(){
+		var m = $("#left option:selected")
+		$("#right").append(m)
+	})
+	
+	$("input:eq(3)").click(function(){
+		var m = $("#right option:selected")
+		$("#left").append(m)
+	})
+</script>
