@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+		$(function(){
+			$("button").click(function(){
+				//console.log(1)                    有两个误点：1，如果没有.clone()，那么只会有
+			//												  一个UL，因为只有添加属性，没有创建。
+			
+				//获取										2，html（）是获取内容和改变添加内容
+				//											不会添加标签到节点树。所以用appen（）。	
+				var oul=$("#box ul").clone();	
+				
+				$("#box").append(oul)
+			})
+		})
+	</script>
+	<body>
+		<button>复制节点</button>
+		<div id="box">
+			<ul>
+				<li>1</li>
+			    <li>2</li>
+			    <li>3</li>
+			    <li>4</li>
+			    <li>5</li>
+			    <li>6</li>
+			</ul>
+		</div>
+	</body>
+</html>
+
