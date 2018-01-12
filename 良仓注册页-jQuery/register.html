@@ -49,6 +49,7 @@
 	var strcode ="0123456789abcdefghiljklmnopqrstuvwxyz"
 	//console.log(strcode[11]) 这个可以有下标
 //	var Recode = new RegExp("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","o","u","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","O","U","W","X","Y","Z");
+	//只能用数组和字符串,那样才有下标,正则是用来判断的.多用于判断,不会用来获取下标.
 	var len = 4;
 	var xiabiao ="";
 	//封装验证码
@@ -56,7 +57,7 @@
 		for (var i=0;i<len;i++){
 			var random = Math.floor(Math.random()*37);
 			xiabiao +=  strcode[random];
-			//console.log(xiabiao)
+			console.log(xiabiao)
 			//return xiabiao	为什么return了，下面的添加代码（$("#mah").html(xiabiao)）无效了，不是程序从上往下走？
 		};
 		$("#mah").html(xiabiao);
@@ -64,7 +65,7 @@
 	}
 	code();
 	
-	console.log(code())  //underfinied   ?
+	//console.log(code())  //underfinied   程序执行了两次，所以要注销掉，不然会两次打印添加上节点。
 
 	
 	//后台回调获取数据后，点击注册事件

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/underscore-min.js" ></script>
+<script type="text/template" id="scpt">
+	<% for(var i =0;i<data.length;i++){%>
+		<h1>
+			<%=data[i].goods_name%>
+		</h1>
+		<img src="<%=data[i].goods_thumb%>" />
+		<%=data[i].is_hot%>
+	<%}%>
+</script>
+<script>
+//	var str = "我是<%=data%>";
+//	var f = _.template(str);
+//	var obj ={data:"中国人"}
+//  var h = f(obj);
+//  document.body.innerHTML =h
+//  
+    
+    
+    //ajax获取后台数据
+    var str = $('#scpt').html()
+    var f = _.template(str)
+    var url = "http://csit.top/api_goods.php"
+    $.get(url,{
+    	cat_id:45,
+    	page:1,
+    	pagesize:100
+    },function(str){
+    	var obj =JSON.parse(str);
+    	//var obj =obj.data[2]
+    	console.log(obj)
+    	var h = f(obj);
+    	document.body.innerHTML=h;
+    })
+</script>
