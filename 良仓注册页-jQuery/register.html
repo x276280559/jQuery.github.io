@@ -18,7 +18,7 @@
 				<span>验证码</span>
 				<input type="text" placeholder="请输入验证码" id="codes"/>
 				<div id="mah"></div>
-				<a href="#" onclick="createCode()">看不清，换一张</a>
+				<a href="javascript:;">看不清，换一张</a>
 			</div>
 			<div class="WithMore">
 				<span>创建密码</span>
@@ -40,12 +40,39 @@
 </html>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script>
-	
 	//var oUsername = document.getElementById("username");
 	//var oPassword = document.getElementById("passw");
+	//正则设置手机号
+	var Rephone = new RegExp("^1[34578][0-9]{9}$");
+	var agree = $("#agree input")
+	//设置验证码
+	var strcode ="0123456789abcdefghiljklmnopqrstuvwxyz"
+	//console.log(strcode[11]) 这个可以有下标
+//	var Recode = new RegExp("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","o","u","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","O","U","W","X","Y","Z");
+	var len = 4;
+	var xiabiao ="";
+	//封装验证码
+	function code(){
+		for (var i=0;i<len;i++){
+			var random = Math.floor(Math.random()*37);
+			xiabiao +=  strcode[random];
+			//console.log(xiabiao)
+			//return xiabiao	为什么return了，下面的添加代码（$("#mah").html(xiabiao)）无效了，不是程序从上往下走？
+		};
+		$("#mah").html(xiabiao);
+		//return xiabiao
+	}
+	code();
+	
+	console.log(code())  //underfinied   ?
+
+	
+	//后台回调获取数据后，点击注册事件
 	$("#register").click(function(){
-		var strUsername =$("#username").val();
-		var strPassword =$("#password").val();
+		var strUsername =$("#username").val();   //手机号
+		var strPassword =$("#password").val();   //密码
+		var codes = $("#codes").val();          //验证码
+		var strPassw = $("#passw").val();   //密码确认
 		var url ="http://csit.top/api_user.php";
 		var json ={
 			status:"register",
@@ -54,18 +81,37 @@
 		}
 		$.post(url,json,function(str){
 			var obj =JSON.parse(str);
-			console.log(obj)
-
-//			$.ajax({
-//					url:"http://csit.top/api_user.php",
-//					data:json,
-//					success:function(date){
-//						console.log(date)
-//					}
-				})
-
-//		})
+			
+			//判断输入的手机号是否是正则规定的
+			if(Rephone.test(strUsername)){
+				//判断手机号正确，继续判断验证码
+				if(codes==xiabiao){
+					//验证码正确，继续判断两个密码框是否一致
+					if(strPassword == strPassw){
+						//判断是否同意条款
+						if(agree.checked == true){
+							
+							if(obj.code == 0){
+								alert('注册成功');
+							}else{
+								alert(obj.message);
+							}
+						}else{
+							alert("同意条款才能注册");
+						}
+					}else{
+						alert("两次密码不一致，请重新输入");
+					}
+				}else{
+					alert("验证码错误，请重新输入");
+					codes=""
+					code();
+				}
+				
+			}else{
+				alert("手机号错误，请重新输入");
+				strUsername="";     //不能清空
+			}
+		})
 	})
-	
-	
 </script>
