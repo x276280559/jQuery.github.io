@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{margin: 0px;padding: 0px;}
+			#max{
+				width:100%;height: 100vh;background: url(img/bg.jpg) no-repeat;background-size: 100%;
+			}
+			.box{
+				width:45px;height:40px;background: url(img/snow.gif) no-repeat;
+				position: absolute;left:600px;top:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="max"></div>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	function Star(d){
+		
+		this.name = d,
+		this.animte =function(){
+			var bw =$("body").width();     //css("width")有单位，不能这样取值。下面随机乘法会有问题，变成NAN
+			var bh =$("body").height();
+			console.log(bw)
+			//随机星星雪花
+			var l = Math.floor(Math.random()*(bw-40))
+			var t = Math.floor(Math.random()*(bh-40))
+			console.log(l)
+			//设置单一个星星雪花移动
+			$(".box").animate({"left": l, "top": t}, 2000);
+		}
+	}
+	
+	//创建多个星星雪花   怎么用面向对象继承出一样的雪花
+	//var star =""
+	setInterval(function(){
+		var star =new Star("<div class='box'></div>");
+		star.animte()
+//		var star +=Star
+       $("#max").append(star.name)
+	},1000)
+</script>
