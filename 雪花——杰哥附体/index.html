@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				height: 100vh;
+				background: url(img/bg.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+		
+			.fly {
+				width: 90px;
+				height: 80px;
+				background: url(img/1.jpg);
+				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.hua {
+				width: 45px;
+				height: 40px;
+				background: url(img/snow.gif);
+				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	function Fly(){
+		//属性，创建节点
+		
+		this.ele=$("<div></div>");
+		//console.log(this.ele)
+		this.ele.addClass("fly");
+		this.ele.appendTo("body");
+		
+		//方法 1  小鸟飞：获取随机位置--然后运动--让他继续飞
+		this.move =function(){
+			var l = Math.random()*($("body").width()-300)
+			//console.log(l)
+			var t = Math.random()*($("body").width()-800)
+			//调用运动框架
+			var er=this
+			$(".fly").animate({left:l,top:t},1000,function(){
+				//console.log(this)
+				er.move()
+			})
+		}
+	}
+	new Fly().move()
+	//方法二:雪花	
+	function Hua(){
+		this.xiaxue =$("<div></div>");
+		this.xiaxue.addClass("hua");
+		this.xiaxue.appendTo("body")
+	}
+	//用外部原型方法
+	Hua.prototype.xia =function(){
+//		console.log(1)
+	//获取屏幕宽高
+		var xl =Math.random()*($("body").width()-200);
+		var hl =Math.random()*($("body").height()-200);
+		var xue =this;
+		//console.log(xue)
+	//雪花运动
+		$(".hua").animate({left:xl,top:hl},2000,function(){
+			xue.xia()
+		})
+	}
+	//雪花创多个。
+	setInterval(function(){
+		new Hua().xia()
+	},1000)
+	
+</script>

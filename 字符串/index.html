@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script>
+//	//             "123"
+//var s = new String("123")
+//
+//// print  打印出字符串的内容
+//s.print()
+
+//自定义--字符串方法 print()
+
+String.prototype.print = function(){
+	console.log(s)
+	var str =""
+	for (var i=0;i<s.length;i++) {
+		//console.log(this)
+		str += s[i]
+		
+	}
+	console.log("这个是打印出的是" +str +"字符串")
+}
+var s = new String("123")
+s.print()
+
+//自定义--数组方法 pust()
+Array.prototype.pust =function(){
+	//console.log(this)
+	var ar =""
+	for (var r=0;r<this.length;r++) {
+		ar+=this[r]
+	}
+	console.log(ar)
+}
+var arr = [1,2,3]
+arr.pust()
+</script>
