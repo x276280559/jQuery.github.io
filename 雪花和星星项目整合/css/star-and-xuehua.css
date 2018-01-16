@@ -1,0 +1,32 @@
+	
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				height: 100vh;
+				background: url(../img/bg.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+		
+			.fly {
+				width: 90px;
+				height: 80px;
+				background: url(../img/1.jpg);
+				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.hua {
+				width: 45px;
+				height: 40px;
+				background: url(../img/snow.gif);
+				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		
