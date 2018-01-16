@@ -7,7 +7,7 @@
 			#box{
 				margin:0;padding:0px;width:100%;height:100vh;
 			}
-			.niao{
+			.bird{
 				width:150px;height:120px;background:url(img/1.jpg) no-repeat;background-size:150px 120px;
 				position: absolute;left:0;top:0;
 			}
@@ -16,18 +16,41 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script>
 		$(function(){
-			
-			function Niao(){}
-			Niao.prototype.name ="<div class='niao'></div>";
-			$("#box").append(Niao.prototype.name);
-			
-			Niao.prototype.callb() =function(){
-				$(".niao").mousedown(function(){
-					
+			function Bird(){
+				//对象的属性
+				this.ele =$("<div></div>");
+				this.ele.addClass("bird")
+				this.ele.appendTo("#box");
+			}
+			//对象的方法：
+			Bird.prototype.tuoz =function(){
+				//console.log(1)   程序进来了
+				var self =this;
+				//事件按下
+				//$(".bird").mousedown(function(e){
+				this.ele.mousedown(function(e){
+					console.log(this.ele)  //undefined ?
+					//console.log(1)  找不到户籍，为什么还能点击出1？
+					var l =e.offsetX;    //jQuery里面没有offsetleft属性，这个属于原生JS中有。？
+					var t= e.offsetY;
+					console.log(l)
+					console.log(t)
+					//事件移动
+					$("body").mousemove(function(e){
+						self.ele.css({
+							left:e.clientX-l,
+							top:e.clientY-t
+						})
+					})
+					//事件移出
+					$("body").mouseup(function(){
+						$("body").off("mousemove mouseup")    //为什么不能放出去
+					})
 				})
 			}
-			var niao =new Niao();
-		})
+			new Bird().tuoz()	
+		})	
+		
 	</script>
 	<body>
 		<div id="box"></div>
