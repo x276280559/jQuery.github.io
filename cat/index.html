@@ -9,16 +9,87 @@
 	</body>
 </html>
 <script>
-	function Cat(){
-		color ="yellow",
-		this.eat = function(){
-			console.log("haha")
-			return Cat
-		}
-		
+//练习：实现以下类的原型链继承
+// 父类：Cat
+//方法：	eat; miaow
+//属性：	color
+//说明： eat吃各种东西
+
+//Cat
+	function Cat(color){
+	//属性
+		this.color="灰白色";
+	};
+	//方法
+	Cat.prototype.eat = function(){
+		console.log("吃各种东西");
 	}
-	console.log(Cat.color)
-	var Cat1 = new Cat;
-	Cat1.eat()
-	console.log(Cat1.color)
+	Cat.prototype.miaow = function(){
+		console.log("cat喵喵~");
+	}
+	// 父类：Cat
+//方法：	eat; miaow
+//属性：	color
+//说明： eat吃各种东西
+//
+//子类1： GarfieldCat
+//方法：eat; miaow; talk
+//属性：color; glasses
+//说明：eat只吃肉
+
+
+//GarfieldCat
+	function GarfieldCat(color){
+		Cat.call(this,color); //继承cat属性
+		this.glasses ="glasses"
+	}
+	GarfieldCat.prototype = new Cat();
+	GarfieldCat.prototype.eat=function(){  //改变继承方法
+		console.log("只吃肉~");
+	}
+	GarfieldCat.prototype.talk=function(){ //添加新方法
+		console.log("会说话~");
+	}
+	// 父类：Cat
+//方法：	eat; miaow
+//属性：	color
+//说明： eat吃各种东西
+
+//子类2： TomCat
+//方法：eat; miaow; catchMouse
+//属性：color; friend
+//说明：eat只吃面包
+
+//TomCat
+	function TomCat(color){
+		Cat.call(this,color);
+		this.friend ="交朋友"
+	}
+	TomCat.prototype = new Cat();
+	TomCat.prototype.eat=function(){  //改变继承方法
+		console.log("只吃面包~");
+	}
+	TomCat.prototype.catchMouse=function(){ //添加新方法
+		console.log("会抓鱼~");
+	}
+	
+	//调用
+var cat = new Cat()
+var garfieldCat = new GarfieldCat()
+var tomCat = new TomCat()
+
+
+cat.eat()
+garfieldCat.eat()
+tomCat.eat()
+
+cat.miaow()
+garfieldCat.miaow()
+tomCat.miaow()
+
+
+garfieldCat.talk()
+tomCat.catchMouse()
+
 </script>
+

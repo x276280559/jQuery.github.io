@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			div{
+				margin:0px;padding:0px;width:100px;height:100px;position: absolute;
+			}
+			#box1{background:red;left:0px;}
+			#box2{background:pink;left:200px;}
+			#box3{background:cyan;left:400px;}
+		</style>
+	</head>
+	<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<div id="box3"></div>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="js/DragBox1.js" ></script>
+<script type="text/javascript" src="js/DragBox2.js" ></script>
+<script type="text/javascript" src="js/DragBox3.js" ></script>
+<script>
+	new DragBox1("#box1").start()
+	new DragBox2("#box2").start()
+	new DragBox3("#box3").start()
+</script>
